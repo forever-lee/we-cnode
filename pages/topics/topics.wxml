@@ -1,0 +1,32 @@
+<!--pages/topics/topics.wxml-->
+<text>pages/topics/topics.wxml</text>
+<view class="topics-main">
+     <view class="top-bar">
+        <block wx:for="{{topBarItems}}">
+        <view class="top-bar-item {{item.selected ? 'top-bar-item-Selected': '' }}" catchtap="onTabItemTap" id="{{item.id}}">{{item.name}}</view>
+        </block>
+     </view>
+     <scroll-view class="posts-list" style="height:100%" scroll-y="true" bindscrolltolower="lower">
+       <block wx:for="{{topicsList}}">
+          <view class="topics-item" index="{{index}}" id ="{{item .id}}" catchtap="redictDetail">
+             <view class="author">
+                <view class="author-name">{{item.author.loginname}}</view>
+                <view class="topics-tag hot" wx:if="{{item.top === true}}">置顶</view>
+                <view class="topics-tag" wx:if="{{item.good ===true}}">精华</view>
+                <view class="topics-last-reply">{{item.last_reply_at}}</view>
+             </view>
+             <view class="topics-title">{{item.title}}</view>
+             <view class="bar-footer">
+                <view class="bar-footer-item">
+                   <view class="bar-footer-item-number">{{item.reply_count}}</view>
+                </view>
+                 <view class="bar-footer-item">
+                   <view class="bar-footer-item-number">{{item.visit_count}}</view>
+                </view>
+             </view>
+          
+          </view>
+          
+       </block>
+     </scroll-view>
+</view>
